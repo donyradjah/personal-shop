@@ -17,7 +17,14 @@ class CreateTableProduct extends Migration
             $table->string('name');
             $table->integer('price');
             $table->string('category_id');
+            $table->string('type_id');
+            $table->string('merk_id');
+            $table->string('kondisi');
+            $table->string('tags');
+            $table->string('berat');
+            $table->integer('see');
             $table->text('desc');
+            $table->text('image');
             $table->integer('stock');
             $table->integer('sell');
             $table->string('user_id');
@@ -25,6 +32,7 @@ class CreateTableProduct extends Migration
             $table->primary('id');
         });
     }
+
 
     /**
      * Reverse the migrations.
