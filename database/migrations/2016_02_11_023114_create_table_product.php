@@ -24,7 +24,6 @@ class CreateTableProduct extends Migration
             $table->string('berat');
             $table->integer('see');
             $table->text('desc');
-            $table->text('image');
             $table->integer('stock');
             $table->integer('sell');
             $table->string('user_id');
