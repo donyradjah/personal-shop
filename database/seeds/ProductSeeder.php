@@ -13,13 +13,13 @@ class ProductSeeder extends Seeder
     {
         DB::table('product')->truncate();
 
-        $service = [
+        $product = [
             ['id' => 1, 'name' => '001501', 'price' => '', 'category_id' => '1', 'desc' => '', 'stock' => '10', 'sell' => '0', 'created_at' => \Carbon\Carbon::now()],
             ['id' => 2, 'name' => '001501', 'price' => '', 'category_id' => '1', 'desc' => '', 'stock' => '10', 'sell' => '0', 'created_at' => \Carbon\Carbon::now()],
              ];
 
         // insert batch
-        DB::table('product')->insert($service);
+        DB::table('product')->insert($product);
 
     }
 }
