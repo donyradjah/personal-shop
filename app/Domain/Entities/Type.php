@@ -2,24 +2,24 @@
     /**
      * Created by PhpStorm.
      * User: dony
-     * Date: 2/12/16
-     * Time: 5:48 PM
+     * Date: 2/13/16
+     * Time: 6:25 AM
      */
 
     namespace App\Domain\Entities;
 
 
-    class Category extends Entities
+    class Type extends Entities
     {
         /**
-    * @var string
-    */
-        protected $table = 'category';
+         * @var string
+         */
+        protected $table = 'type';
 
         /**
          * @var array
          */
-        protected $fillable = ['category', 'type', 'child_id','user_id'];
+        protected $fillable = ['type', 'category_id','user_id'];
 
         /**
          * @var string
@@ -29,7 +29,7 @@
         /**
          * @var string
          */
-        public static $tags = 'category';
+        public static $tags = 'type';
 
         /**
          * @var array
@@ -40,7 +40,13 @@
             'deleted_at',
         ];
 
-
+        /**
+         * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+         */
+        public function category()
+        {
+            return $this->belongsTo('App\Domain\Entities\Category', 'category_id');
+        }
 
 
         /**
@@ -53,6 +59,9 @@
          */
         public function scopeLikeSearch($query, $search)
         {
-            return empty($q) ? $query : $query->where('category', 'LIKE', '%' . $search . '%');
+            return empty($q) ? $query : $query->where('type', 'LIKE', '%' . $search . '%');
         }
+    }
+    {
+
     }

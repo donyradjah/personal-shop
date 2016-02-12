@@ -2,24 +2,24 @@
     /**
      * Created by PhpStorm.
      * User: dony
-     * Date: 2/12/16
-     * Time: 5:48 PM
+     * Date: 2/13/16
+     * Time: 5:58 AM
      */
 
     namespace App\Domain\Entities;
 
 
-    class Category extends Entities
+    class Menu extends Entities
     {
         /**
-    * @var string
-    */
-        protected $table = 'category';
+         * @var string
+         */
+        protected $table = 'menu';
 
         /**
          * @var array
          */
-        protected $fillable = ['category', 'type', 'child_id','user_id'];
+        protected $fillable = ['area_id', 'title', 'menu','user_id'];
 
         /**
          * @var string
@@ -29,7 +29,7 @@
         /**
          * @var string
          */
-        public static $tags = 'category';
+        public static $tags = 'menu';
 
         /**
          * @var array
@@ -53,6 +53,6 @@
          */
         public function scopeLikeSearch($query, $search)
         {
-            return empty($q) ? $query : $query->where('category', 'LIKE', '%' . $search . '%');
+            return empty($q) ? $query : $query->where('title', 'LIKE', '%' . $search . '%');
         }
     }

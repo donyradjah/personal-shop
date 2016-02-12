@@ -2,24 +2,24 @@
     /**
      * Created by PhpStorm.
      * User: dony
-     * Date: 2/12/16
-     * Time: 5:48 PM
+     * Date: 2/13/16
+     * Time: 6:18 AM
      */
 
     namespace App\Domain\Entities;
 
 
-    class Category extends Entities
+    class Report extends Entities
     {
         /**
-    * @var string
-    */
-        protected $table = 'category';
+         * @var string
+         */
+        protected $table = 'report';
 
         /**
          * @var array
          */
-        protected $fillable = ['category', 'type', 'child_id','user_id'];
+        protected $fillable = ['date', 'month', 'year', 'income', 'saldo','total','product_id'];
 
         /**
          * @var string
@@ -29,7 +29,7 @@
         /**
          * @var string
          */
-        public static $tags = 'category';
+        public static $tags = 'report';
 
         /**
          * @var array
@@ -41,7 +41,13 @@
         ];
 
 
-
+        /**
+         * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+         */
+        public function product()
+        {
+            return $this->belongsTo('App\Domain\Entities\Merk', 'product_id');
+        }
 
         /**
          * Where Like name
@@ -51,8 +57,5 @@
          *
          * @return mixed
          */
-        public function scopeLikeSearch($query, $search)
-        {
-            return empty($q) ? $query : $query->where('category', 'LIKE', '%' . $search . '%');
-        }
+
     }
