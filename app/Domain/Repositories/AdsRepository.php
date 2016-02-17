@@ -13,14 +13,26 @@
     use App\Domain\Contracts\Paginable;
     use App\Domain\Entities\Ads;
 
+    /**
+     * Class AdsRepository
+     * @package App\Domain\Repositories
+     */
     class AdsRepository extends AbstractRepository implements Paginable, Crudable
     {
+        /**
+         * @param Ads $ads
+         */
         public function __construct(Ads $ads)
         {
             $this->model = $ads;
         }
 
         //function for detail
+        /**
+         * @param int $id
+         * @param array $columns
+         * @return \Illuminate\Database\Eloquent\Model
+         */
         public function find($id, array $columns = ['*'])
         {
 
@@ -30,6 +42,10 @@
         }
 
         //function for store
+        /**
+         * @param array $data
+         * @return \Symfony\Component\HttpFoundation\Response
+         */
         public function create(array $data)
         {
 
@@ -53,6 +69,11 @@
         }
 
         //function for update
+        /**
+         * @param $id
+         * @param array $data
+         * @return \Symfony\Component\HttpFoundation\Response
+         */
         public function update($id, array $data)
         {
 
@@ -76,6 +97,10 @@
         }
 
         //function for delete
+        /**
+         * @param $id
+         * @return \Symfony\Component\HttpFoundation\Response
+         */
         public function delete($id)
         {
             try {
@@ -91,6 +116,14 @@
         }
 
         //function for getData
+        /**
+         * @param int $limit
+         * @param int $page
+         * @param array $column
+         * @param string $field
+         * @param string $search
+         * @return mixed
+         */
         public function getByPage($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
         {
             $ads = parent::getByPageOrderBy($limit, $page, $column, 'ads', $search, 'created_at');

@@ -13,14 +13,26 @@
     use App\Domain\Contracts\Paginable;
     use App\Domain\Entities\Category;
 
+    /**
+     * Class CategoryRepository
+     * @package App\Domain\Repositories
+     */
     class CategoryRepository extends AbstractRepository implements Paginable, Crudable
     {
+        /**
+         * @param Category $category
+         */
         public function __construct(Category $category)
         {
             $this->model = $category;
         }
 
         //function for detail
+        /**
+         * @param int $id
+         * @param array $columns
+         * @return \Illuminate\Database\Eloquent\Model
+         */
         public function find($id, array $columns = ['*'])
         {
 
@@ -30,6 +42,10 @@
         }
 
         //function for store
+        /**
+         * @param array $data
+         * @return \Symfony\Component\HttpFoundation\Response
+         */
         public function create(array $data)
         {
 
@@ -52,6 +68,11 @@
         }
 
         //function for update
+        /**
+         * @param $id
+         * @param array $data
+         * @return \Symfony\Component\HttpFoundation\Response
+         */
         public function update($id, array $data)
         {
 
@@ -74,6 +95,10 @@
         }
 
         //function for delete
+        /**
+         * @param $id
+         * @return \Symfony\Component\HttpFoundation\Response
+         */
         public function delete($id)
         {
             try {
@@ -89,6 +114,14 @@
         }
 
         //function for getData
+        /**
+         * @param int $limit
+         * @param int $page
+         * @param array $column
+         * @param string $field
+         * @param string $search
+         * @return mixed
+         */
         public function getByPage($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
         {
             $category = parent::getByPageOrderBy($limit, $page, $column, 'category', $search, 'created_at');
