@@ -11,6 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::group(['prefix' => 'api/v1'], function () {
+
+    Route::resource('ads', 'AdsController');
+    Route::resource('category', 'CategoryController');
+    Route::resource('menu', 'MenuController');
+    Route::resource('merk', 'MerkController');
+    Route::resource('product', 'ProductController');
+    Route::resource('report', 'ReportController');
+    Route::resource('review', 'ReviewController');
+    Route::resource('type', 'TypeController');
+
+}
