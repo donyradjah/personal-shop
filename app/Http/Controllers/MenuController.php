@@ -6,8 +6,7 @@ use App\Domain\Repositories\MenuRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
+use App\Http\Requests\MenuRequest;
 /**
  * Class MenuController
  * @package App\Http\Controllers

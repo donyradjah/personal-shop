@@ -6,8 +6,7 @@ use App\Domain\Repositories\TypeRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
+use App\Http\Requests\TypeRequest;
 class TypeController extends Controller
 {
     

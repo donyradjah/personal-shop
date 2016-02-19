@@ -6,8 +6,7 @@ use App\Domain\Repositories\CategoryRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
+use App\Http\Requests\CategoryRequest;
 /**
  * Class CategoryController
  * @package App\Http\Controllers

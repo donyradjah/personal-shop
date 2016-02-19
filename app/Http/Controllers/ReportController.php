@@ -38,43 +38,4 @@ class ReportController extends Controller
     }
 
 
-    /**
-     * @param ReportRequest $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function store(ReportRequest $request)
-    {
-        return $this->report->create($request->all());
-    }
-
-
-    /**
-     * @param $id
-     * @return \Illuminate\Database\Eloquent\Model
-     */
-    public function show($id)
-    {
-        return $this->report->find($id);
-    }
-
-
-    /**
-     * @param ReportRequest $request
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function update(ReportRequest $request, $id)
-    {
-        return $this->report->update($id, $request->all());
-    }
-
-
-    /**
-     * @param $id
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function destroy($id)
-    {
-        return $this->report->delete($id);
-    }
 }

@@ -6,8 +6,7 @@ use App\Domain\Repositories\ProductRepository;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
-
+use App\Http\Requests\ProductRequest;
 /**
  * Class ProductController
  * @package App\Http\Controllers
