@@ -24,6 +24,4 @@ Route::group(['prefix' => 'api/v1'], function () {
 
 });
 
-    Route::get('/', function () {
-        return view('partials.content');
-    });
+    Route::get('/', [ 'as' => 'page.home' , 'uses' => 'PageController@index' ]);

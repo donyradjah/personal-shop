@@ -476,4 +476,27 @@
         </div> <!--wrap -->
     </div> <!-- page-content -->
 
+    <script type='text/javascript' src="{!! asset('assets/js/jquery-1.10.2.min.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/js/jqueryui-1.10.3.min.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/js/bootstrap.min.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/js/enquire.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/js/jquery.cookie.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/js/jquery.touchSwipe.min.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/js/jquery.nicescroll.min.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/plugins/codeprettifier/prettify.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/plugins/easypiechart/jquery.easypiechart.min.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/plugins/sparklines/jquery.sparklines.min.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/plugins/form-toggle/toggle.min.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/plugins/form-wysihtml5/wysihtml5-0.3.0.min.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/plugins/form-wysihtml5/bootstrap-wysihtml5.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/plugins/fullcalendar/fullcalendar.min.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/plugins/form-daterangepicker/daterangepicker.min.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/plugins/form-daterangepicker/moment.min.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/plugins/charts-flot/jquery.flot.min.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/plugins/charts-flot/jquery.flot.resize.min.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/plugins/charts-flot/jquery.flot.orderBars.min.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/demo/demo-index.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/js/placeholdr.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/js/application.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/demo/demo.js') !!}"></script>
 @endsection

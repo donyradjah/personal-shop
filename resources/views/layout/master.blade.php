@@ -59,23 +59,23 @@
     CKEDITOR.replace('message');
 
 </script>
-<script type='text/javascript' src="{!! asset('assets/js/jquery-1.10.2.min.js') !!}"></script>
-<script type='text/javascript' src="{!! asset('assets/js/jqueryui-1.10.3.min.js') !!}"></script>
-<script type='text/javascript' src="{!! asset('assets/js/bootstrap.min.js') !!}"></script>
-<script type='text/javascript' src="{!! asset('assets/js/enquire.js') !!}"></script>
-<script type='text/javascript' src="{!! asset('assets/js/jquery.cookie.js') !!}"></script>
-<script type='text/javascript' src="{!! asset('assets/js/jquery.touchSwipe.min.js') !!}"></script>
-<script type='text/javascript' src="{!! asset('assets/js/jquery.nicescroll.min.js') !!}"></script>
-<script type='text/javascript' src="{!! asset('assets/plugins/codeprettifier/prettify.js') !!}"></script>
-<script type='text/javascript' src="{!! asset('assets/plugins/easypiechart/jquery.easypiechart.min.js') !!}"></script>
-<script type='text/javascript' src="{!! asset('assets/plugins/sparklines/jquery.sparklines.min.js') !!}"></script>
-<script type='text/javascript' src="{!! asset('assets/plugins/form-toggle/toggle.min.js') !!}"></script>
-<script type='text/javascript'
-        src="{!! asset('assets/plugins/form-inputmask/jquery.inputmask.bundle.min.js') !!}"></script>
-<script type='text/javascript' src="{!! asset('assets/demo/demo-mask.js') !!}"></script>
-<script type='text/javascript' src="{!! asset('assets/js/placeholdr.js') !!}"></script>
-<script type='text/javascript' src={!! asset('assets/js/application.js') !!}></script>
-<script type='text/javascript' src={!! asset('assets/demo/demo.js') !!}></script>
+{{--<script type='text/javascript' src="{!! asset('assets/js/jquery-1.10.2.min.js') !!}"></script>--}}
+{{--<script type='text/javascript' src="{!! asset('assets/js/jqueryui-1.10.3.min.js') !!}"></script>--}}
+{{--<script type='text/javascript' src="{!! asset('assets/js/bootstrap.min.js') !!}"></script>--}}
+{{--<script type='text/javascript' src="{!! asset('assets/js/enquire.js') !!}"></script>--}}
+{{--<script type='text/javascript' src="{!! asset('assets/js/jquery.cookie.js') !!}"></script>--}}
+{{--<script type='text/javascript' src="{!! asset('assets/js/jquery.touchSwipe.min.js') !!}"></script>--}}
+{{--<script type='text/javascript' src="{!! asset('assets/js/jquery.nicescroll.min.js') !!}"></script>--}}
+{{--<script type='text/javascript' src="{!! asset('assets/plugins/codeprettifier/prettify.js') !!}"></script>--}}
+{{--<script type='text/javascript' src="{!! asset('assets/plugins/easypiechart/jquery.easypiechart.min.js') !!}"></script>--}}
+{{--<script type='text/javascript' src="{!! asset('assets/plugins/sparklines/jquery.sparklines.min.js') !!}"></script>--}}
+{{--<script type='text/javascript' src="{!! asset('assets/plugins/form-toggle/toggle.min.js') !!}"></script>--}}
+{{--<script type='text/javascript'--}}
+        {{--src="{!! asset('assets/plugins/form-inputmask/jquery.inputmask.bundle.min.js') !!}"></script>--}}
+{{--<script type='text/javascript' src="{!! asset('assets/demo/demo-mask.js') !!}"></script>--}}
+{{--<script type='text/javascript' src="{!! asset('assets/js/placeholdr.js') !!}"></script>--}}
+{{--<script type='text/javascript' src={!! asset('assets/js/application.js') !!}></script>--}}
+{{--<script type='text/javascript' src={!! asset('assets/demo/demo.js') !!}></script>--}}
 
 {{--<script type='text/javascript' src='assets/plugins/datatables/jquery.dataTables.js'></script>--}}
 {{--<script type='text/javascript' src='assets/plugins/datatables/dataTables.bootstrap.js'></script>--}}
