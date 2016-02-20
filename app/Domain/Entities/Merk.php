@@ -40,6 +40,8 @@
             'deleted_at',
         ];
 
+        protected $with = ['category'];
+
         /**
          * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
          */

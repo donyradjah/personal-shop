@@ -22,4 +22,8 @@ Route::group(['prefix' => 'api/v1'], function () {
     Route::resource('review', 'ReviewController');
     Route::resource('type', 'TypeController');
 
-}
+});
+
+    Route::get('/', function () {
+        return view('partials.content');
+    });
