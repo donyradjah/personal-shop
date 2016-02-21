@@ -25,3 +25,11 @@ Route::group(['prefix' => 'api/v1'], function () {
 });
 
     Route::get('/', [ 'as' => 'page.home' , 'uses' => 'PageController@index' ]);
+    Route::get('/ads', [ 'as' => 'page.ads' , 'uses' => 'PageController@ads' ]);
+    Route::get('/category', [ 'as' => 'page.category' , 'uses' => 'PageController@category' ]);
+    Route::get('/menu', [ 'as' => 'page.menu' , 'uses' => 'PageController@menu' ]);
+    Route::get('/merk', [ 'as' => 'page.merk' , 'uses' => 'PageController@merk' ]);
+    Route::get('/product', [ 'as' => 'page.product' , 'uses' => 'PageController@product' ]);
+    Route::get('/report', [ 'as' => 'page.report' , 'uses' => 'PageController@report' ]);
+    Route::get('/review', [ 'as' => 'page.review' , 'uses' => 'PageController@review' ]);
+    Route::get('/type', [ 'as' => 'page.type' , 'uses' => 'PageController@type' ]);

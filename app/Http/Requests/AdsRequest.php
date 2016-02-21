@@ -17,9 +17,9 @@
          * @var array
          */
         protected $attrs = [
-            'category' => 'category',
-            'type'     => 'type',
-            'child_id' => 'child id',
+            'area_id' => 'area id',
+            'ads'     => 'ads',
+            'link'    => 'link',
         ];
 
         /**
@@ -28,9 +28,9 @@
         public function rules()
         {
             return [
-                'category' => 'required',
-                'type'     => 'required',
-                'child_id' => 'required',
+                'area_id' => 'required',
+                'ads'     => 'required',
+                'link'    => 'required',
             ];
         }
 
@@ -56,9 +56,9 @@
             return [
                 'success'    => false,
                 'validation' => [
-                    'category' => $message->first('category'),
-                    'type'     => $message->first('type'),
-                    'child_id' => $message->first('child_id'),
+                    'area_id' => $message->first('area_id'),
+                    'ads'     => $message->first('ads'),
+                    'link'    => $message->first('link'),
                 ],
             ];
         }
