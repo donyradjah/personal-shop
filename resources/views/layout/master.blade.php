@@ -9,9 +9,11 @@
     <meta name="author" content="The Red Team"/>
 
     <link href="{!! asset('assets/css/styles.min.css') !!}" rel="stylesheet" type='text/css' media="all"/>
+    <link href="{!! asset('assets/css/custom.css') !!}" rel="stylesheet" type='text/css' media="all"/>
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600' rel='stylesheet' type='text/css'/>
 
 
+    <link rel='stylesheet' type='text/css' href="{!! asset('assets/fonts/glyphicons/css/glyphicons.min.css') !!}" />
     <link href="{!! asset('assets/demo/variations/default.css') !!}" rel='stylesheet' type='text/css' media='all'
           id='styleswitcher'/>
 
@@ -69,7 +71,8 @@
         <script type='text/javascript' src="{!! asset('assets/plugins/fullcalendar/fullcalendar.min.js') !!}"></script>
         <script type='text/javascript' src="{!! asset('assets/plugins/form-daterangepicker/daterangepicker.min.js') !!}"></script>
         <script type='text/javascript' src="{!! asset('assets/plugins/form-daterangepicker/moment.min.js') !!}"></script>
-        <script type='text/javascript' src="{!! asset('assets/demo/demo-index.js') !!}"></script>
+        {{--<script type='text/javascript' src="{!! asset('assets/demo/demo-index.js') !!}"></script>--}}
+        <script type='text/javascript' src="{!! asset('assets/plugins/form-parsley/parsley.min.js') !!}"></script>
         <script type='text/javascript' src="{!! asset('assets/plugins/form-toggle/toggle.min.js') !!}"></script>
         <script type='text/javascript' src="{!! asset('assets/plugins/form-inputmask/jquery.inputmask.bundle.min.js') !!}"></script>
         <script type='text/javascript' src="{!! asset('assets/demo/demo-mask.js') !!}"></script>

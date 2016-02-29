@@ -6,24 +6,14 @@
         <div id='wrap'>
             <div id="page-heading">
                 <ol class="breadcrumb">
-                    <li><a href="index.php">Dashboad</a></li>
+                    <li><a href="index.php">Dashboard</a></li>
                     <li class="active">Ads</li>
                 </ol>
-
+                <div id="loader-wrapper">
+                    <div id="loader"></div>
+                </div>
                 <h1>Advertisment</h1>
-                {{--<div class="options">--}}
-                {{--<div class="btn-toolbar">--}}
-                {{--<div class="btn-group hidden-xs">--}}
-                {{--<a href='#' class="btn btn-muted dropdown-toggle" data-toggle='dropdown'><i class="icon-cloud-download"></i><span class="hidden-sm"> Export as  </span><span class="caret"></span></a>--}}
-                {{--<ul class="dropdown-menu">--}}
-                {{--<li><a href="#">Text File (*.txt)</a></li>--}}
-                {{--<li><a href="#">Excel File (*.xlsx)</a></li>--}}
-                {{--<li><a href="#">PDF File (*.pdf)</a></li>--}}
-                {{--</ul>--}}
-                {{--</div>--}}
-                {{--<a href="#" class="btn btn-muted"><i class="icon-cog"></i></a>--}}
-                {{--</div>--}}
-                {{--</div>--}}
+
             </div>
 
             <div class="container">
@@ -33,15 +23,19 @@
                             <div class="panel-heading">
                                 <h4>Data Advertisment</h4>
 
-                                <div class="options">
 
+                                <!-- Modal -->
+
+                                <div class="options">
+                                    <a data-toggle="modal" href="#formCreate"><i class="glyphicon glyphicon-plus"></i></a>
                                 </div>
                             </div>
                             <div class="panel-body">
                                 {{--<p>For basic styling—light padding and only horizontal dividers—add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.</p>--}}
-                                <table class="table">
+                                <table class="table table-striped table-hover">
                                     <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Area</th>
                                         <th>Ads</th>
                                         <th>Link</th>
@@ -52,44 +46,68 @@
 
                                     </tbody>
                                 </table>
+                                    <ul class="pagination" id="pag">
+
+                                    </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <!-- container -->
         </div>
         <!--wrap -->
     </div> <!-- page-content -->
+
+
+    <div class="modal fade" id="formCreate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+
+                    <div class="panel panel-midnightblue">
+                        <div class="panel-heading">
+                            <h4>Create Ads</h4>
+                            <div class="options">
+                                <a href="javascript:;" class="panel-collapse"><i class="icon-chevron-down"></i></a>
+                            </div>
+                        </div>
+                        <div class="panel-body collapse in">
+                            <form id="Create" class="form-horizontal row-border" />
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Nama Iklan</label>
+                                <div class="col-sm-6">
+                                    <input name="ads" id="ads" type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Link</label>
+                                <div class="col-sm-6">
+                                    <input name="link" id="link" type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Link</label>
+                                <div class="col-sm-6">
+                                    <input name="area" id="area" type="text" class="form-control" />
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
     <script type='text/javascript' src="{!! asset('assets/js/jquery-1.10.2.min.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('Controller/AdsCtrl.js') !!}"></script>
 
-    <script language="javascript">
-        CKEDITOR.replace('message');
-
-    </script>
-
-    <script>
-        $(document).ready(function () {
-            getAjax();
-        });
-        function getAjax() {
-            $("#dataAds").children().remove();
-
-//            $("#loader2").delay(2000).animate({
-//                opacity:0,
-//                width: 0,
-//                height:0
-//            }, 500);
-            $.getJSON("/api/v1/ads", function (data) {
-                var ads = data.data;
-                var jumlah = ads.length;
-                $.each(ads.slice(0, jumlah), function (i, data) {
-                    $("#dataAds").append("<tr><td>" + data.area_id + "</td><td>" + data.ads + "</td><td>" + data.link + "</td></tr>");
-                })
-            });
-
-        }
-    </script>
 @endsection
