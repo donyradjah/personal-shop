@@ -35,11 +35,11 @@
                                 <table class="table table-striped table-hover">
                                     <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th>#</th>
                                         <th>Area</th>
                                         <th>Ads</th>
                                         <th>Link</th>
-                                        <th>Action</th>
+                                        <th width="400">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody id="dataAds">

@@ -73,12 +73,12 @@ function getAjax(page) {
     $("#Create")[0].reset();
     $('#loader-wrapper').show();
     setTimeout(function(){  $.getJSON("api/v1/ads?page="+page, function (data) {
-        var no = 0;
+        var no = data.from;
         var ads = data.data;
         //console.log(ads);
         $.each(ads.slice(0, data.total), function (i, data) {
-            no++;
             $("#dataAds").append("<tr><td>"+ no +"</td><td>" + data.area_id + "</td><td>" + data.ads + "</td><td>" + data.link + "</td><td><button type='button' class='btn btn-outline btn-info' data-toggle='modal' data-target='#myModal' onclick='Detail(" + data.id + ")'>Detail</button> <button type='button' class='btn btn-outline btn-primary' onclick='Edit(" + data.id + ")'>Edit</button> <button type='button' class='btn btn-outline btn-danger' onclick='Hapus(" + data.id + ")'>Delete</button></td></tr>");
+            no++;
         });
         $("#loader-wrapper").hide();
         if(data.current_page ==  1){
