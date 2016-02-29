@@ -36,6 +36,24 @@ class CategoryController extends Controller
         return $this->category->getByPage(10, $request->input('page'), $column = ['*'], $key = '', $request->input('term'));
     }
 
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function getByPageMain(Request $request)
+    {
+        return $this->category->getByPageMain(10, $request->input('page'), $column = ['*'], $key = '', $request->input('term'));
+    }
+
+    /**
+     * @param Request $request
+     * @return mixed
+     */
+    public function getByPageChild($id,Request $request)
+    {
+        return $this->category->getByPageChild($id,10, $request->input('page'), $column = ['*'], $key = '', $request->input('term'));
+    }
+
 
     /**
      * @param CategoryRequest $request

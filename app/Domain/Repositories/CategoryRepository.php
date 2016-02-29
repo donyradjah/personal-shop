@@ -129,4 +129,47 @@
 
             return $category;
         }
+
+        /**
+         * @param int $limit
+         * @param int $page
+         * @param array $column
+         * @param $field
+         * @param string $search
+         * @return mixed
+         */
+        public function getByPageMain($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
+        {
+            $category = $this->model
+                ->where('category', 'like', '%' . $search . '%')
+                ->where('type','main')
+                ->orderBy(\DB::raw('ABS(category)'))
+                ->paginate($limit)
+                ->toArray();
+
+
+            return $category;
+        }
+
+        /**
+         * @param int $limit
+         * @param int $page
+         * @param array $column
+         * @param $field
+         * @param string $search
+         * @return mixed
+         */
+        public function getByPageChild($id,$limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
+        {
+            $category = $this->model
+                ->where('category', 'like', '%' . $search . '%')
+                ->where('child_id',$id)
+                ->where('type','child')
+                ->orderBy(\DB::raw('ABS(category)'))
+                ->paginate($limit)
+                ->toArray();
+
+
+            return $category;
+        }
     }

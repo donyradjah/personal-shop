@@ -1,60 +1,60 @@
 <?php
 
-namespace App\Http\Requests;
+    namespace App\Http\Requests;
 
-use App\Http\Requests\Request;
-use Illuminate\Contracts\Validation\Validator;
+    use App\Http\Requests\Request;
+    use Illuminate\Contracts\Validation\Validator;
 
-class CategoryRequest extends Request
-{
-
-    /**
-     * @var array
-     */
-    protected $attrs = [
-        'area_id' => 'Area',
-        'ads'     => 'ads',
-        'link'    => 'link',
-    ];
-
-    /**
-     * @return array
-     */
-    public function rules()
+    class CategoryRequest extends Request
     {
-        return [
-            'area_id' => 'required',
-            'ads'     => 'required',
-            'link'    => 'required',
+
+        /**
+         * @var array
+         */
+        protected $attrs = [
+            'category' => 'Category',
+            'type'     => 'type',
+            'child_id' => 'child',
         ];
+
+        /**
+         * @return array
+         */
+        public function rules()
+        {
+            return [
+                'category' => 'required',
+                'type'     => 'required',
+                'child_id' => 'required',
+            ];
+        }
+
+
+        /**
+         * @param $validator
+         * @return mixed
+         */
+        public function validator($validator)
+        {
+            return $validator->make($this->all(), $this->container->call([$this, 'rules']), $this->messages(), $this->attrs);
+        }
+
+
+        /**
+         * @param Validator $validator
+         * @return array
+         */
+        protected function formatErrors(Validator $validator)
+        {
+            $message = $validator->errors();
+
+            return [
+                'success'    => false,
+                'validation' => [
+                    'category' => $message->first('category'),
+                    'type'     => $message->first('type'),
+                    'child_id' => $message->first('child_id'),
+                ],
+            ];
+        }
     }
-
-
-    /**
-     * @param $validator
-     * @return mixed
-     */
-    public function validator($validator)
-    {
-        return $validator->make($this->all(), $this->container->call([$this, 'rules']), $this->messages(), $this->attrs);
-    }
-
-
-    /**
-     * @param Validator $validator
-     * @return array
-     */
-    protected function formatErrors(Validator $validator)
-    {
-        $message = $validator->errors();
-
-        return [
-            'success'    => false,
-            'validation' => [
-                'area_id' => $message->first('area_id'),
-                'ads'     => $message->first('ads'),
-                'link'    => $message->first('link'),
-            ],
-        ];
-    }
-}

@@ -15,6 +15,8 @@ Route::group(['prefix' => 'api/v1'], function () {
 
     Route::resource('ads', 'AdsController');
     Route::resource('category', 'CategoryController');
+    Route::resource('category-main', 'CategoryController@getByPageMain');
+    Route::resource('category-child/{id}', 'CategoryController@getByPageChild');
     Route::resource('menu', 'MenuController');
     Route::resource('merk', 'MerkController');
     Route::resource('product', 'ProductController');

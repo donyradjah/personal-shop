@@ -41,7 +41,12 @@
             'deleted_at',
         ];
 
+protected $with= ['main'];
 
+        public function main(){
+            return $this->belongsTo('App\Domain\Entities\Category', 'child_id');
+
+        }
 
 
         /**
