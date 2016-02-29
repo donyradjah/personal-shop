@@ -13,7 +13,7 @@ class CreateTableReport extends Migration
     public function up()
     {
         Schema::create('report', function (Blueprint $table) {
-            $table->string('id',50);
+            $table->increments('id');
             $table->string('date');
             $table->string('month');
             $table->string('year');
@@ -22,7 +22,6 @@ class CreateTableReport extends Migration
             $table->integer('total');
             $table->string('product_id');
             $table->timestamps();
-            $table->primary('id');
         });
     }
 

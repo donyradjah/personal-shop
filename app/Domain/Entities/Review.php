@@ -8,8 +8,9 @@
 
     namespace App\Domain\Entities;
 
+    use Illuminate\Database\Eloquent\Model;
 
-    class Review extends Entities
+    class Review extends Model
     {
         /**
          * @var string

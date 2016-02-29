@@ -8,8 +8,9 @@
 
     namespace App\Domain\Entities;
 
+    use Illuminate\Database\Eloquent\Model;
 
-    class Ads extends Entities
+    class Ads extends Model
     {
         /**
          * @var string

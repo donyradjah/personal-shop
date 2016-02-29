@@ -8,8 +8,9 @@
 
     namespace App\Domain\Entities;
 
+    use Illuminate\Database\Eloquent\Model;
 
-    class Menu extends Entities
+    class Menu extends Model
     {
         /**
          * @var string

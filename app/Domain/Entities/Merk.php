@@ -8,8 +8,9 @@
 
     namespace App\Domain\Entities;
 
+    use Illuminate\Database\Eloquent\Model;
 
-    class Merk extends Entities
+    class Merk extends Model
     {
         /**
          * @var string

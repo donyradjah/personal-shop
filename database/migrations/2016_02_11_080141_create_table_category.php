@@ -13,13 +13,12 @@ class CreateTableCategory extends Migration
     public function up()
     {
         Schema::create('category', function (Blueprint $table) {
-            $table->string('id',50);
+            $table->increments('id');
             $table->string('category');
             $table->string('user_id');
             $table->string('type');
             $table->string('child_id');
             $table->timestamps();
-            $table->primary('id');
         });
     }
 

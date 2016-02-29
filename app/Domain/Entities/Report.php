@@ -8,8 +8,9 @@
 
     namespace App\Domain\Entities;
 
+    use Illuminate\Database\Eloquent\Model;
 
-    class Report extends Entities
+    class Report extends Model
     {
         /**
          * @var string

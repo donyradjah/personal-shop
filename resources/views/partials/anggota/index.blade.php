@@ -309,7 +309,7 @@
             $.getJSON("/data-anggota", function (data) {
                 var jumlah = data.length;
                 $.each(data.slice(0, jumlah), function (i, data) {
-                    $("#data-example").append("<tr><td>" + data.nama + "</td><td>" + data.alamat + "</td><td>" + data.kota + "</td><td>" + data.no_telp + "</td><td><button type='button' class='btn btn-outline btn-info' data-toggle='modal' data-target='#myModal' onclick='Detail(" + data.id + ")'>Detail</button> <button type='button' class='btn btn-outline btn-primary' onclick='Edit(" + data.id + ")'>Edit</button> <button type='button' class='btn btn-outline btn-danger' onclick='Hapus(" + data.id + ")'>Delete</button></td></tr>");
+                    $("#data-examplev").append("<tr><td>" + data.nama + "</td><td>" + data.alamat + "</td><td>" + data.kota + "</td><td>" + data.no_telp + "</td><td><button type='button' class='btn btn-outline btn-info' data-toggle='modal' data-target='#myModal' onclick='Detail(" + data.id + ")'>Detail</button> <button type='button' class='btn btn-outline btn-primary' onclick='Edit(" + data.id + ")'>Edit</button> <button type='button' class='btn btn-outline btn-danger' onclick='Hapus(" + data.id + ")'>Delete</button></td></tr>");
                 })
             });
         }

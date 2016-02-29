@@ -13,7 +13,7 @@ class CreateTableType extends Migration
     public function up()
     {
         Schema::create('type', function (Blueprint $table) {
-            $table->string('id',50);
+            $table->increments('id');
             $table->string('type');
             $table->string('category_id');
             $table->string('user_id');

@@ -13,13 +13,12 @@ class CreateTableReview extends Migration
     public function up()
     {
         Schema::create('review', function (Blueprint $table) {
-            $table->string('id',50);
+            $table->increments('id');
             $table->string('product_id');
             $table->text('review');
             $table->string('rating');
             $table->string('name');
             $table->timestamps();
-            $table->primary('id');
         });
     }
 

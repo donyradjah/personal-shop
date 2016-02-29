@@ -6,8 +6,16 @@ use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Webpatser\Uuid\Uuid;
 
+/**
+ * Class Entities
+ * @package App\Domain\Entities
+ */
 class Entities extends Model
 {
+    /**
+     * @var bool
+     */
+    public $incrementing = false;
     /**
      * The "booting" method of the model.
      *
@@ -44,7 +52,7 @@ class Entities extends Model
      */
     public function generateNewId()
     {
-        return Uuid::generate(4);
+        return Uuid::generate(1);
     }
 
     /**

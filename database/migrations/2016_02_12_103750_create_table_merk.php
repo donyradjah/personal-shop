@@ -14,12 +14,11 @@ class CreateTableMerk extends Migration
     {
 
         Schema::create('merk', function (Blueprint $table) {
-            $table->string('id',50);
+            $table->increments('id');
             $table->string('merk');
             $table->string('category_id');
             $table->string('user_id');
             $table->timestamps();
-            $table->primary('id');
         });
     }
 
