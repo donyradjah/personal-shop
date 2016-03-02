@@ -94,5 +94,11 @@ class CategoryController extends Controller
     {
         return $this->category->delete($id);
     }
-    
+
+    /**
+     * @return mixed
+     */
+    public function getListMain(){
+        return $this->category->getListmain();
+    }
 }

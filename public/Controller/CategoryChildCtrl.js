@@ -3,14 +3,14 @@
  */
 $(document).ready(function () {
     var currentRequest = null;
-    getAjax(1);
-
+    getAjax(1, '');
+    CategoryMain();
     $("#Create").submit(function (event) {
         event.preventDefault();
         var $form = $(this),
             category = $form.find("input[name='category']").val(),
-            type = 'main',
-            child_id = '';
+            type = 'child',
+            child_id = $form.find("input[name='child_id']").val();
 
 
         var posting = $.post('/api/v1/category', {
@@ -39,7 +39,7 @@ $(document).ready(function () {
             id = $form.find("input[name='id']").val(),
             category = $form.find("input[name='category']").val(),
             type = 'main',
-            child_id = '';
+            child_id = $form.find("input[name='child_id']").val();
 //                console.log(currentRequest + ' |' + id);
         currentRequest = $.ajax({
             method: "PUT",
@@ -67,19 +67,19 @@ $(document).ready(function () {
 });
 
 
-function getAjax(page) {
+function getAjax(page, id) {
     $("#dataCat").children().remove();
     $("#pag").children().remove();
     $('#loader-wrapper').show();
     $("#Create")[0].reset();
     $("#Edit")[0].reset();
     setTimeout(function () {
-        $.getJSON("api/v1/category-main?page=" + page, function (data) {
+        $.getJSON("api/v1/category-child/" + id + "?page=" + page, function (data) {
             var no = data.from;
             var ads = data.data;
             //console.log(ads);
             $.each(ads.slice(0, data.total), function (i, data) {
-                $("#dataCat").append("<tr><td>" + no + "</td><td>" + data.category + "</td><td> <a data-toggle='modal' href='#formEdit'><button type='button' class='btn btn-outline btn-primary' onclick='Edit(" + data.id + ")'><i class='glyphicon glyphicon-pencil'></i></button></a> <button type='button' class='btn btn-outline btn-danger' onclick='Hapus(" + data.id + ")'><i class='glyphicon glyphicon-remove' </button></td></tr>");
+                $("#dataCat").append("<tr><td>" + no + "</td><td>" + data.category + "</td><td>" + data.main.category + "</td><td> <a data-toggle='modal' href='#formEdit'><button type='button' class='btn btn-outline btn-primary' onclick='Edit(" + data.id + ")'><i class='glyphicon glyphicon-pencil'></i></button></a> <button type='button' class='btn btn-outline btn-danger' onclick='Hapus(" + data.id + ")'><i class='glyphicon glyphicon-remove' </button></td></tr>");
                 no++;
             });
             $("#loader-wrapper").hide();
@@ -99,7 +99,7 @@ function getAjax(page) {
         }).error(function (data) {
             $("#loader-wrapper").hide();
             $("#dataCat").append("<tr><td colspan='4'>Data Kosong</td></tr>");
-        });;
+        });
     }, 1000);
 
 }
@@ -113,7 +113,7 @@ function Edit(id) {
         .done(function (data) {
             $("input[name='id']").val(data.id);
             $("input[name='category']").val(data.category);
-
+            $("input[name='child_id']").val(data.child_id);
 
 
         });
@@ -134,4 +134,17 @@ function Hapus(id) {
             });
     }
 
+}
+
+
+function CategoryMain() {
+    $.getJSON("api/v1/list-category-main", function (data) {
+        var jumlah = data.length;
+        $.each(data.slice(0, jumlah), function (i, data) {
+            $("#optionCategoryMain").append("<option value=" + data.id + ">" + data.category + "</option>");
+
+        });
+
+
+    });
 }

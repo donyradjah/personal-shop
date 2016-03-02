@@ -152,6 +152,19 @@
         }
 
         /**
+         * @return mixed
+         */
+        public function getListmain(){
+            $category = $this->model
+                ->where('type','main')
+                ->orderBy(\DB::raw('ABS(category)'))
+                ->get();
+
+
+            return $category;
+        }
+
+        /**
          * @param int $limit
          * @param int $page
          * @param array $column

@@ -13,6 +13,10 @@
      * Class PageController
      * @package App\Http\Controllers
      */
+    /**
+     * Class PageController
+     * @package App\Http\Controllers
+     */
     class PageController extends Controller
     {
 
@@ -35,9 +39,17 @@
         /**
          * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
          */
-        public function category()
+        public function categoryMain()
         {
             return view('partials.category.index');
+        }
+
+        /**
+         * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+         */
+        public function categoryChild()
+        {
+            return view('partials.category.indexChild');
         }
 
         /**

@@ -96,7 +96,10 @@ function getAjax(page) {
 
             }
 
-        });
+        }).error(function (data) {
+            $("#loader-wrapper").hide();
+            $("#dataCat").append("<tr><td colspan='4'>Data Kosong</td></tr>");
+        });;
     }, 1000);
 
 }
