@@ -25,7 +25,7 @@
             return [
                 'category' => 'required',
                 'type'     => 'required',
-                'child_id' => 'required',
+                'child_id' => '',
             ];
         }
 

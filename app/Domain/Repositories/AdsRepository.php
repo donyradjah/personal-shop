@@ -53,7 +53,34 @@
                 $ads = parent::create([
                     'area_id' => e($data['area_id']),
                     'ads'     => e($data['ads']),
-//                    'image'   => e($data['image'  ]),
+                    'image'   => e($data['image']),
+                    'link'    => e($data['link']),
+                    'user_id' => '',
+                ]);
+
+                return $ads;
+
+            } catch (\Exception $e) {
+                //store errors to log
+                Log::error('class :' . AdsRepository::class . ' method : create | ' . $e);
+
+                return $this->createError();
+            }
+        }
+
+        /**
+         * @param $path
+         * @param array $data
+         * @return \Symfony\Component\HttpFoundation\Response
+         */
+        public function createUpload($filename,array $data)
+        {
+
+            try {
+                $ads = parent::create([
+                    'area_id' => e($data['area_id']),
+                    'ads'     => e($data['ads']),
+                    'image'   => $filename,
                     'link'    => e($data['link']),
                     'user_id' => '',
                 ]);

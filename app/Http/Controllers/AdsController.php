@@ -8,6 +8,8 @@
     use App\Http\Requests;
     use App\Http\Controllers\Controller;
     use App\Http\Requests\AdsRequest;
+    use Intervention\Image\Facades\Image;
+
     /**
      * Class AdsController
      * @package App\Http\Controllers
@@ -43,7 +45,18 @@
          */
         public function store(AdsRequest $request)
         {
-            return $this->ads->create($request->all());
+
+            $image = $request->file('image_ads');;
+            $filename  = time() . '.' . $image->getClientOriginalExtension();
+
+            $path = public_path('image/ads/' . $filename);
+
+
+            Image::make($image->getRealPath())->resize(500, 500)->save($path);
+
+
+
+            return $this->ads->createUpload($filename,$request->all());
         }
 
 

@@ -4,8 +4,19 @@
 $(document).ready(function () {
     var currentRequest = null;
     getAjax(1);
+    $('#image').hide();
 
-    $("#Create").submit(function (event) {
+    $("#image_ads").change(function () {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = imageIsLoaded;
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+
+
+
+$("#Create").submit(function (event) {
         event.preventDefault();
         var $form = $(this),
             ads = $form.find("input[name='ads']").val(),
@@ -13,22 +24,41 @@ $(document).ready(function () {
             area = $form.find("input[name='area']").val();
 
 
-        var posting = $.post('/api/v1/ads', {
-            ads: ads,
-            link: link,
-            area_id: area
-        });
 
+
+        //var posting = $.post('/api/v1/ads', {
+        //    ads: ads,
+        //    link: link,
+        //    area_id: area
+        //});
+        var upload =   $.ajax({
+            url: "/api/v1/ads",
+            type: "POST",
+            data:  new FormData(this),
+            contentType: false,
+            cache: false,
+            processData:false,
+            success: function(data) {
+                window.alert(data.result.message);
+                getAjax(1);
+                $("#formCreate").modal("hide");
+
+                $('#image').hide();
+                $('#image').attr('src', '');
+            },
+            error: function (data){
+                window.alert(data.result.message);
+            }
+            });
         // Put the results in a div
-        posting.done(function (data) {
-//                    console.log(data);
-//            $("#Create").reset();
-            window.alert(data.result.message);
-            getAjax(1);
-        });
-        posting.error(function (data) {
-            window.alert(data.result.message);
-        });
+//        upload.done(function (data) {
+//
+//            window.alert(data.result.message);
+//            getAjax(1);
+//        });
+//        upload.error(function (data) {
+//            window.alert(data.result.message);
+//        });
         return false;
     });
 
@@ -57,6 +87,8 @@ $(document).ready(function () {
             success: function (data) {
                 window.alert(data.result.message);
                 getAjax(1);
+                $("#formEdit").modal("hide");
+
             },
             error: function (data) {
                 window.alert(data.result.message);
@@ -79,7 +111,7 @@ function getAjax(page) {
             var ads = data.data;
             //console.log(ads);
             $.each(ads.slice(0, data.total), function (i, data) {
-                $("#dataAds").append("<tr><td>" + no + "</td><td>" + data.area_id + "</td><td>" + data.ads + "</td><td>" + data.link + "</td><td> <a data-toggle='modal' href='#formEdit'><button type='button' class='btn btn-outline btn-primary' onclick='Edit("+ data.id +")'><i class='glyphicon glyphicon-pencil'></i></button></a> <button type='button' class='btn btn-outline btn-danger' onclick='Hapus(" + data.id + ")'><i class='glyphicon glyphicon-remove' </button></td></tr>");
+                $("#dataAds").append("<tr><td>" + no + "</td><td>" + data.area_id + "</td><td>" + data.ads + "</td><td>" + data.link + "</td><td> <a data-toggle='modal' href='#formEdit'><button type='button' class='btn btn-outline btn-primary' onclick='Edit(" + data.id + ")'><i class='glyphicon glyphicon-pencil'></i></button></a> <button type='button' class='btn btn-outline btn-danger' onclick='Hapus(" + data.id + ")'><i class='glyphicon glyphicon-remove' </button></td></tr>");
                 no++;
             });
             $("#loader-wrapper").hide();
@@ -99,7 +131,8 @@ function getAjax(page) {
         }).error(function (data) {
             $("#loader-wrapper").hide();
             $("#dataCat").append("<tr><td colspan='4'>Data Kosong</td></tr>");
-        });;
+        });
+        ;
     }, 1000);
 
 }
@@ -118,6 +151,10 @@ function Edit(id) {
 
         });
 }
+function imageIsLoaded(e) {
+    $('#image').show();
+    $('#image').attr('src', e.target.result);
+};
 
 function Hapus(id) {
     var result = confirm("Apakah Anda Yakin ingin Menghapus Data Ini?");

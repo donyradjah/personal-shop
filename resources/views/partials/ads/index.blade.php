@@ -27,7 +27,8 @@
                                 <!-- Modal -->
 
                                 <div class="options">
-                                    <a data-toggle="modal" href="#formCreate"><i class="glyphicon glyphicon-plus"></i></a>
+                                    <a data-toggle="modal" href="#formCreate"><i
+                                                class="glyphicon glyphicon-plus"></i></a>
                                 </div>
                             </div>
                             <div class="panel-body">
@@ -46,9 +47,9 @@
 
                                     </tbody>
                                 </table>
-                                    <ul class="pagination" id="pag">
+                                <ul class="pagination" id="pag">
 
-                                    </ul>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -60,7 +61,8 @@
     </div> <!-- page-content -->
 
 
-    <div class="modal fade" id="formCreate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="formCreate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
@@ -68,42 +70,59 @@
                     <div class="panel panel-midnightblue">
                         <div class="panel-heading">
                             <h4>Create Ads</h4>
+
                             <div class="options">
                                 <a href="javascript:;" class="panel-collapse"><i class="icon-chevron-down"></i></a>
                             </div>
                         </div>
                         <div class="panel-body collapse in">
-                            <form id="Create" class="form-horizontal row-border" />
-                             <div class="form-group">
+                            <form id="Create" class="form-horizontal row-border" enctype="multipart/form-data"/>
+                            <div class="form-group">
                                 <label class="col-sm-3 control-label">Nama Iklan</label>
+
                                 <div class="col-sm-6">
-                                    <input name="ads" id="ads" required="required" type="text" class="form-control" />
+                                    <input name="ads" id="ads" required="required" type="text" class="form-control"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Link</label>
+
                                 <div class="col-sm-6">
-                                    <input name="link" data-type="url" id="link" required="required" type="text" class="form-control" />
+                                    <input name="link" data-type="url" id="link" required="required" type="text"
+                                           class="form-control"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Area</label>
+
                                 <div class="col-sm-6">
-                                    <input name="area" id="area" required="required" type="text" class="form-control" />
+                                    <input name="area_id" id="area_id" required="required" type="text" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Image</label>
+
+                                <div class="col-sm-6">
+                                    <input name="image_ads" id="image_ads" required="required" type="file"
+                                           class="form-control"/>
+                                    </br>
+                                    <img src="" id="image" width="320px" height="180px">
                                 </div>
                             </div>
 
-                        </div>
-                    </div>
 
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit"  class="btn btn-primary">Save changes</button>
-                    </form>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+                </form>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     <div class="modal fade" id="formEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -113,31 +132,48 @@
                     <div class="panel panel-midnightblue">
                         <div class="panel-heading">
                             <h4>Edit Ads</h4>
+
                             <div class="options">
                                 <a href="javascript:;" class="panel-collapse"><i class="icon-chevron-down"></i></a>
                             </div>
                         </div>
                         <div class="panel-body collapse in">
-                            <form id="Edit" class="form-horizontal row-border" />
-                             <input type="hidden" name="id">
+                            <form id="Edit" class="form-horizontal row-border"/>
+                            <input type="hidden" name="id">
+
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Nama Iklan</label>
+
                                 <div class="col-sm-6">
-                                    <input name="ads" id="ads" required="required" type="text" class="form-control" />
+                                    <input name="ads" id="ads" required="required" type="text" class="form-control"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Link</label>
+
                                 <div class="col-sm-6">
-                                    <input name="link" data-type="url" id="link" required="required" type="text" class="form-control" />
+                                    <input name="link" data-type="url" id="link" required="required" type="text"
+                                           class="form-control"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">Area</label>
+
                                 <div class="col-sm-6">
-                                    <input name="area" id="area" required="required" type="text" class="form-control" />
+                                    <input name="area_id" id="area_id" required="required" type="text" class="form-control"/>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Image</label>
+
+                                <div class="col-sm-6">
+                                    <input name="image_ads" id="image_ads" required="required" type="file"
+                                           class="form-control"/>
+                                    </br>
+                                    <img src="" id="image" width="320px" height="180px">
+                                </div>
+                            </div>
+
 
                         </div>
                     </div>
@@ -145,15 +181,17 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit"  class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary" >Save changes</button>
                     </form>
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
     </div><!-- /.modal -->
 
     <script type='text/javascript' src="{!! asset('assets/js/jquery-1.10.2.min.js') !!}"></script>
     <script type='text/javascript' src="{!! asset('Controller/AdsCtrl.js') !!}"></script>
-  <script type='text/javascript' src="{!! asset('assets/demo/demo-formvalidation.js') !!}"></script>
+    <script type='text/javascript' src="{!! asset('assets/demo/demo-formvalidation.js') !!}"></script>
 
 @endsection

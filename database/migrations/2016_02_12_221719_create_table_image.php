@@ -16,8 +16,6 @@ class CreateTableImage extends Migration
             $table->increments('id');
             $table->string('image');
             $table->string('product_id');
-            $table->string('type');
-            $table->string('ads_id');
             $table->string('user_id');
             $table->timestamps();
         });
