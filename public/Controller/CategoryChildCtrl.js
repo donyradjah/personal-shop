@@ -6,29 +6,36 @@ $(document).ready(function () {
     getAjax(1, '');
     CategoryMain();
     $("#Create").submit(function (event) {
-        event.preventDefault();
-        var $form = $(this),
-            category = $form.find("input[name='category']").val(),
-            type = 'child',
-            child_id = $form.find("input[name='child_id']").val();
+        if($("#optionCategoryMain").val() == "" || $("#optionCategoryMain").val() == null){
+
+            window.alert("Pilih Category Utama dahulu");
+            $("#formCreate").modal("hide");
+        }else {
+            event.preventDefault();
+            var $form = $(this),
+                category = $form.find("input[name='category']").val(),
+                type = 'child',
+                child_id = $form.find("input[name='child_id']").val();
 
 
-        var posting = $.post('/api/v1/category', {
-            category: category,
-            type: type,
-            child_id: child_id
-        });
+            var posting = $.post('/api/v1/category', {
+                category: category,
+                type: type,
+                child_id: $("#optionCategoryMain").val()
+            });
 
-        // Put the results in a div
-        posting.done(function (data) {
+            // Put the results in a div
+            posting.done(function (data) {
 //                    console.log(data);
 //            $("#Create").reset();
-            window.alert(data.result.message);
-            getAjax(1);
-        });
-        posting.error(function (data) {
-            window.alert(data.result.message);
-        });
+                $("#formCreate").modal("hide");
+                window.alert(data.result.message);
+                getAjax(1,$("#optionCategoryMain").val());
+            });
+            posting.error(function (data) {
+                window.alert(data.result.message);
+            });
+        }
         return false;
     });
 
@@ -47,7 +54,7 @@ $(document).ready(function () {
             data: {
                 category: category,
                 type: type,
-                child_id: child_id
+                child_id: $("#optionCategoryMain").val()
             },
             beforeSend: function () {
                 if (currentRequest != null) {
@@ -56,11 +63,14 @@ $(document).ready(function () {
             },
             success: function (data) {
                 window.alert(data.result.message);
-                getAjax(1);
+                $("#formEdit").modal("hide");
+                getAjax(1,$("#optionCategoryMain").val());
+
             },
             error: function (data) {
                 window.alert(data.result.message);
-                getAjax(1);
+                $("#formEdit").modal("hide");
+                getAjax(1,$("#optionCategoryMain").val());
             }
         });
     });
@@ -86,13 +96,13 @@ function getAjax(page, id) {
             if (data.current_page == 1) {
                 $("#pag").append("<li class='previus disabled'><a href='#'>newer</a></li>");
             } else {
-                $("#pag").append("<li class='previus'><a href='javascript:getAjax(" + (data.current_page - 1) + ");'>newer</a></li>");
+                $("#pag").append("<li class='previus'><a href='javascript:getAjax("+  (data.current_page - 1) + "," + id + ");'>newer</a></li>");
 
             }
             if (data.last_page <= data.current_page) {
                 $("#pag").append("<li class='next disabled'><a href='#'>older</a></li>");
             } else {
-                $("#pag").append("<li class='next'><a href='javascript:getAjax(" + (data.current_page + 1) + ");'>older</a></li>");
+                $("#pag").append("<li class='next'><a href='javascript:getAjax(" + (data.current_page + 1) +  "," + id + ");'>older</a></li>");
 
             }
 
@@ -130,7 +140,7 @@ function Hapus(id) {
             .done(function (data) {
                 window.alert(data.result.message);
 //                            table.ajax.reload(null, false);
-                getAjax(1);
+                getAjax(1,$("#optionCategoryMain").val());
             });
     }
 
@@ -140,9 +150,9 @@ function Hapus(id) {
 function CategoryMain() {
     $.getJSON("api/v1/list-category-main", function (data) {
         var jumlah = data.length;
+        $("#optionCategoryMain").append("<option value=''>Pilih Kategori</option>");
         $.each(data.slice(0, jumlah), function (i, data) {
             $("#optionCategoryMain").append("<option value=" + data.id + ">" + data.category + "</option>");
-
         });
 
 

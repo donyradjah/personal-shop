@@ -5,8 +5,6 @@
     use App\Domain\Repositories\AdsRepository;
     use Illuminate\Http\Request;
 
-    use App\Http\Requests;
-    use App\Http\Controllers\Controller;
     use App\Http\Requests\AdsRequest;
     use Intervention\Image\Facades\Image;
 
@@ -38,6 +36,26 @@
             return $this->ads->getByPage(10, $request->input('page'), $column = ['*'], $key = '', $request->input('term'));
         }
 
+        public function uploadImage($id,Request $request)
+        {
+
+            $image = $this->ads->find($id)->image;
+            \File::delete(public_path() . "/image/ads/" . $image);
+
+            $file = $request->file('image_ads');
+            $original_name1 = $file->getClientOriginalName();
+            $arr1 = str_replace(' ', '', $original_name1);
+
+
+            $fileName = "ads".date('dmYhi'). $request->ads  . $arr1;
+
+
+            $path = public_path('image/ads/' . $fileName);
+
+
+            Image::make($file->getRealPath())->resize(800, 600)->save($path);
+
+        }
 
         /**
          * @param AdsRequest $request
@@ -46,17 +64,20 @@
         public function store(AdsRequest $request)
         {
 
-            $image = $request->file('image_ads');;
-            $filename  = time() . '.' . $image->getClientOriginalExtension();
-
-            $path = public_path('image/ads/' . $filename);
-
-
-            Image::make($image->getRealPath())->resize(500, 500)->save($path);
+            $file = $request->file('image_ads');
+            $original_name1 = $file->getClientOriginalName();
+            $arr1 = str_replace(' ', '', $original_name1);
 
 
+            $fileName = "ads".date('dmYhi'). $request->ads  . $arr1;
 
-            return $this->ads->createUpload($filename,$request->all());
+            $path = public_path('image/ads/' . $fileName);
+
+
+            Image::make($file->getRealPath())->resize(800, 600)->save($path);
+
+
+            return $this->ads->createUpload($fileName, $request->all());
         }
 
 
@@ -77,7 +98,14 @@
          */
         public function update(AdsRequest $request, $id)
         {
+
             return $this->ads->update($id, $request->all());
+        }
+
+        public function updateUpload(AdsRequest $request, $id)
+        {
+
+            return $this->ads->updateUpload($request->image,$id, $request->all());
         }
 
 

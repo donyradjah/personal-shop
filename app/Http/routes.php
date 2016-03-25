@@ -24,7 +24,8 @@
         Route::resource('report', 'ReportController');
         Route::resource('review', 'ReviewController');
         Route::resource('type', 'TypeController');
-
+        Route::post("upload-image/{id}","AdsController@uploadImage");
+        Route::put("ads-upload/{id}","AdsController@updateUpload");
     });
 
     Route::get('/', ['as' => 'page.home', 'uses' => 'PageController@index']);

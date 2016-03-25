@@ -73,7 +73,7 @@
          * @param array $data
          * @return \Symfony\Component\HttpFoundation\Response
          */
-        public function createUpload($filename,array $data)
+        public function createUpload($filename, array $data)
         {
 
             try {
@@ -89,7 +89,7 @@
 
             } catch (\Exception $e) {
                 //store errors to log
-                Log::error('class :' . AdsRepository::class . ' method : create | ' . $e);
+                \Log::error('class :' . AdsRepository::class . ' method : create | ' . $e);
 
                 return $this->createError();
             }
@@ -108,7 +108,34 @@
                 $ads = parent::update($id, [
                     'area_id' => e($data['area_id']),
                     'ads'     => e($data['ads']),
-//                    'image'   => e($data['image'  ]),
+//                    'image'   => $fileName,
+                    'link'    => e($data['link']),
+                    'user_id' => '',
+                ]);
+
+                return $ads;
+
+            } catch (\Exception $e) {
+                //store errors to log
+               \ Log::error('class :' . AdsRepository::class . ' method : update | ' . $e);
+
+                return $this->createError();
+            }
+        }
+
+        public function updateUpload($filename, $id, array $data)
+        {
+
+            try {
+                $arr1 = str_replace(' ', '', $filename);
+
+
+                $fileName = "ads".date('dmYhi'). $data['ads']  . $arr1;
+
+                $ads = parent::update($id, [
+                    'area_id' => e($data['area_id']),
+                    'ads'     => e($data['ads']),
+                    'image'   => $fileName,
                     'link'    => e($data['link']),
                     'user_id' => '',
                 ]);
@@ -131,6 +158,9 @@
         public function delete($id)
         {
             try {
+                $image = $this->find($id)->image;
+                \File::delete(public_path() . "/image/ads/" . $image);
+
                 $ads = parent::delete($id);
 
                 return $ads;

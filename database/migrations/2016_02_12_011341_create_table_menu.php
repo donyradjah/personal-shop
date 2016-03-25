@@ -16,7 +16,7 @@ class CreateTableMenu extends Migration
             $table->increments('id');
             $table->string('area_id');
             $table->string('title');
-            $table->string('menu');
+            $table->text('menu');
             $table->string('user_id');
             $table->timestamps();
         });

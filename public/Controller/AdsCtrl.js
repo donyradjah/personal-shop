@@ -14,6 +14,16 @@ $(document).ready(function () {
         }
     });
 
+    $('#image_edit').hide();
+
+    $("#image_ads_edit").change(function () {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+            reader.onload = imageIsLoadedEdit;
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+
 
 
 $("#Create").submit(function (event) {
@@ -69,33 +79,92 @@ $("#Create").submit(function (event) {
             id = $form.find("input[name='id']").val(),
             ads = $form.find("input[name='ads']").val(),
             link = $form.find("input[name='link']").val(),
-            area = $form.find("input[name='area']").val();
+            area = $form.find("input[name='area_id']").val();
 //                console.log(currentRequest + ' |' + id);
-        currentRequest = $.ajax({
-            method: "PUT",
-            url: '/api/v1/ads/' + id,
-            data: {
-                ads: ads,
-                link: link,
-                area_id: area
-            },
-            beforeSend: function () {
-                if (currentRequest != null) {
-                    currentRequest.abort();
-                }
-            },
-            success: function (data) {
-                window.alert(data.result.message);
-                getAjax(1);
-                $("#formEdit").modal("hide");
+        if($("#image_ads_edit").val()==null || $("#image_ads_edit").val() == "") {
+            currentRequest = $.ajax({
+                url: "/api/v1/ads/"+id,
+                type: "PUT",
+                data:  {
 
-            },
-            error: function (data) {
-                window.alert(data.result.message);
-                getAjax(1);
-            }
-        });
-    });
+                    ads : ads,
+                    area_id : area,
+                    link : link
+
+
+                },
+                beforeSend: function () {
+                    if (currentRequest != null) {
+                        currentRequest.abort();
+                    }
+                },
+                success: function (data) {
+                    window.alert(data.result.message);
+                    getAjax(1);
+                    $("#formEdit").modal("hide");
+
+                    $('#image_edit').hide();
+                    $('#image_edit').attr('src', '');
+
+                },
+                error: function (data) {
+                    window.alert(data.result.message);
+                    getAjax(1);
+                }
+            });
+        }else{
+            var $form = $(this),
+                id = $form.find("input[name='id']").val(),
+                ads = $form.find("input[name='ads']").val(),
+                link = $form.find("input[name='link']").val(),
+                area = $form.find("input[name='area_id']").val();
+            image = $("#image_ads_edit").val();
+            var upload =   $.ajax({
+                url: "/api/v1/upload-image/"+id,
+                type: "POST",
+                data:  new FormData(this),
+                contentType: false,
+                cache: false,
+                processData:false,
+                success: function(data) {
+                    window.alert(data.result.message);
+                    getAjax(1);
+                    $("#formEdit").modal("hide");
+
+
+                    $('#image_edit').hide();
+                    $('#image_edit').attr('src', '');
+                },
+                error: function (data){
+                    window.alert(data.result.message);
+                }
+            });
+            $.ajax({
+                url:"/api/v1/ads-upload/"+id,
+                type:"PUT",
+                data:{
+                    area_id:area,
+                    ads:ads,
+                    link:link,
+                    image:image
+                },
+                success: function(data) {
+                    window.alert(data.result.message);
+                    getAjax(1);
+                    $("#formEdit").modal("hide");
+
+
+                    $('#image_edit').hide();
+                    $('#image_edit').attr('src', '');
+                },
+                error: function (data){
+                    window.alert(data.result.message);
+                }
+            });
+
+        }
+
+    })
 });
 
 
@@ -111,7 +180,7 @@ function getAjax(page) {
             var ads = data.data;
             //console.log(ads);
             $.each(ads.slice(0, data.total), function (i, data) {
-                $("#dataAds").append("<tr><td>" + no + "</td><td>" + data.area_id + "</td><td>" + data.ads + "</td><td>" + data.link + "</td><td> <a data-toggle='modal' href='#formEdit'><button type='button' class='btn btn-outline btn-primary' onclick='Edit(" + data.id + ")'><i class='glyphicon glyphicon-pencil'></i></button></a> <button type='button' class='btn btn-outline btn-danger' onclick='Hapus(" + data.id + ")'><i class='glyphicon glyphicon-remove' </button></td></tr>");
+                $("#dataAds").append("<tr><td>" + no + "</td><td>" + data.ads + "</td><td>" + data.link + "</td><td> <a data-toggle='modal' href='#formEdit'><button type='button' class='btn btn-outline btn-primary' onclick='Edit(" + data.id + ")'><i class='glyphicon glyphicon-pencil'></i></button></a> <button type='button' class='btn btn-outline btn-danger' onclick='Hapus(" + data.id + ")'><i class='glyphicon glyphicon-remove' </button></td></tr>");
                 no++;
             });
             $("#loader-wrapper").hide();
@@ -147,13 +216,18 @@ function Edit(id) {
             $("input[name='id']").val(data.id);
             $("input[name='ads']").val(data.ads);
             $("input[name='link']").val(data.link);
-            $("input[name='area']").val(data.area_id);
-
+            $("input[name='area_id']").val(data.area_id);
+            $('#image_edit').show();
+            $('#image_edit').attr('src', "image/ads/"+data.image);
         });
 }
 function imageIsLoaded(e) {
     $('#image').show();
     $('#image').attr('src', e.target.result);
+};
+function imageIsLoadedEdit(e) {
+    $('#image_edit').show();
+    $('#image_edit').attr('src', e.target.result);
 };
 
 function Hapus(id) {
