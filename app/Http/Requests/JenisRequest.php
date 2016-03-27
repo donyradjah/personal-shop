@@ -2,22 +2,22 @@
     /**
      * Created by PhpStorm.
      * User: dony
-     * Date: 2/18/16
-     * Time: 11:43 AM
+     * Date: 3/27/16
+     * Time: 7:28 AM
      */
 
     namespace App\Http\Requests;
 
     use Illuminate\Contracts\Validation\Validator;
 
-    class MerkRequest extends Request
+    class JenisRequest extends Request
     {
         /**
          * @var array
          */
         protected $attrs = [
-            'jenis_id' => 'jenis id',
-            'merk'        => 'merk',
+            'category_id' => 'category id',
+            'jenis'     => 'jenis',
 
         ];
 
@@ -27,8 +27,8 @@
         public function rules()
         {
             return [
-                'jenis_id' => 'required',
-                'merk'        => 'required',
+                'category_id' => 'required',
+                'jenis'     => 'required',
 
             ];
         }
@@ -55,8 +55,8 @@
             return [
                 'success'    => false,
                 'validation' => [
-                    'jenis_id' => $message->first('jenis_id'),
-                    'merk'        => $message->first('merk'),
+                    'category_id' => $message->first('category_id'),
+                    'jenis'     => $message->first('merk'),
                 ],
             ];
         }

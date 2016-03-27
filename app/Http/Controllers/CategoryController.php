@@ -101,4 +101,7 @@ class CategoryController extends Controller
     public function getListMain(){
         return $this->category->getListmain();
     }
+    public function getListCategory(){
+        return $this->category->getListCategory();
+    }
 }

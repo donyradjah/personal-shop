@@ -47,6 +47,14 @@ protected $with= ['main'];
             return $this->belongsTo('App\Domain\Entities\Category', 'child_id');
 
         }
+        public function main2(){
+            return $this->hasMany('App\Domain\Entities\Category', 'child_id');
+
+        }
+        public function jenis(){
+            return $this->hasMany('App\Domain\Entities\Jenis','category_id');
+
+        }
 
 
         /**

@@ -71,7 +71,7 @@
 
             } catch (\Exception $e) {
                 //store errors to log
-                Log::error('class :' . ProductRepository::class . ' method : create | ' . $e);
+                \Log::error('class :' . ProductRepository::class . ' method : create | ' . $e);
 
                 return $this->createError();
             }
@@ -107,7 +107,7 @@
 
             } catch (\Exception $e) {
                 //store errors to log
-                Log::error('class :' . ProductRepository::class . ' method : update | ' . $e);
+                \Log::error('class :' . ProductRepository::class . ' method : update | ' . $e);
 
                 return $this->createError();
             }
@@ -125,7 +125,7 @@
                 return $product;
             } catch (\Exception $e) {
                 //store error to log
-                Log::error('class :' . ProductRepository::class . ' method : delete | ' . $e);
+                \Log::error('class :' . ProductRepository::class . ' method : delete | ' . $e);
 
                 return $this->createError();
             }

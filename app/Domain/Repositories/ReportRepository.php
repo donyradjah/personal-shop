@@ -64,7 +64,7 @@
 
             } catch (\Exception $e) {
                 //store errors to log
-                Log::error('class :' . ReportRepository::class . ' method : create | ' . $e);
+                \Log::error('class :' . ReportRepository::class . ' method : create | ' . $e);
 
                 return $this->createError();
             }
@@ -94,7 +94,7 @@
 
             } catch (\Exception $e) {
                 //store errors to log
-                Log::error('class :' . ReportRepository::class . ' method : update | ' . $e);
+                \Log::error('class :' . ReportRepository::class . ' method : update | ' . $e);
 
                 return $this->createError();
             }
@@ -113,7 +113,7 @@
                 return $report;
             } catch (\Exception $e) {
                 //store error to log
-                Log::error('class :' . ReportRepository::class . ' method : delete | ' . $e);
+                \Log::error('class :' . ReportRepository::class . ' method : delete | ' . $e);
 
                 return $this->createError();
             }

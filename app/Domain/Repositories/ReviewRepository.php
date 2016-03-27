@@ -62,7 +62,7 @@
 
             } catch (\Exception $e) {
                 //store errors to log
-                Log::error('class :' . ReviewRepository::class . ' method : create | ' . $e);
+                \Log::error('class :' . ReviewRepository::class . ' method : create | ' . $e);
 
                 return $this->createError();
             }
@@ -90,7 +90,7 @@
 
             } catch (\Exception $e) {
                 //store errors to log
-                Log::error('class :' . ReviewRepository::class . ' method : update | ' . $e);
+                \Log::error('class :' . ReviewRepository::class . ' method : update | ' . $e);
 
                 return $this->createError();
             }
@@ -109,7 +109,7 @@
                 return $review;
             } catch (\Exception $e) {
                 //store error to log
-                Log::error('class :' . ReviewRepository::class . ' method : delete | ' . $e);
+                \Log::error('class :' . ReviewRepository::class . ' method : delete | ' . $e);
 
                 return $this->createError();
             }

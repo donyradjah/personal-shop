@@ -61,7 +61,7 @@
 
             } catch (\Exception $e) {
                 //store errors to log
-                Log::error('class :' . CategoryRepository::class . ' method : create | ' . $e);
+                \Log::error('class :' . CategoryRepository::class . ' method : create | ' . $e);
 
                 return $this->createError();
             }
@@ -88,7 +88,7 @@
 
             } catch (\Exception $e) {
                 //store errors to log
-                Log::error('class :' . CategoryRepository::class . ' method : update | ' . $e);
+                \Log::error('class :' . CategoryRepository::class . ' method : update | ' . $e);
 
                 return $this->createError();
             }
@@ -107,7 +107,7 @@
                 return $category;
             } catch (\Exception $e) {
                 //store error to log
-                Log::error('class :' . CategoryRepository::class . ' method : delete | ' . $e);
+                \Log::error('class :' . CategoryRepository::class . ' method : delete | ' . $e);
 
                 return $this->createError();
             }
@@ -163,6 +163,16 @@
 
             return $category;
         }
+        public function getListCategory(){
+            $category = $this->model
+                ->where('type','main')
+                 ->with("main2","jenis")
+                ->orderBy(\DB::raw('ABS(child_id)'))
+                ->get();
+
+
+            return $category;
+        }
 
         /**
          * @param int $limit
@@ -178,6 +188,7 @@
                 ->where('category', 'like', '%' . $search . '%')
                 ->where('child_id',$id)
                 ->where('type','child')
+                ->with("jenis")
                 ->orderBy(\DB::raw('ABS(category)'))
                 ->paginate($limit)
                 ->toArray();

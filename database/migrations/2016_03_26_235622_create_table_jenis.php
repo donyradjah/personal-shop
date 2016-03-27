@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableMerk extends Migration
+class CreateTableJenis extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,10 @@ class CreateTableMerk extends Migration
      */
     public function up()
     {
-
-        Schema::create('merk', function (Blueprint $table) {
+        Schema::create('jenis', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('merk');
-            $table->string('jenis_id');
+            $table->string('jenis');
+            $table->string('category_id');
             $table->string('user_id');
             $table->timestamps();
         });
@@ -29,6 +28,6 @@ class CreateTableMerk extends Migration
      */
     public function down()
     {
-        Schema::drop('merk');
+        Schema::drop('jenis');
     }
 }

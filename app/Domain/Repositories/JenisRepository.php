@@ -2,8 +2,8 @@
     /**
      * Created by PhpStorm.
      * User: dony
-     * Date: 2/15/16
-     * Time: 8:05 AM
+     * Date: 3/27/16
+     * Time: 7:18 AM
      */
 
     namespace App\Domain\Repositories;
@@ -11,20 +11,14 @@
 
     use App\Domain\Contracts\Crudable;
     use App\Domain\Contracts\Paginable;
-    use App\Domain\Entities\Merk;
+    use App\Domain\Entities\Jenis;
 
-    /**
-     * Class MerkRepository
-     * @package App\Domain\Repositories
-     */
-    class MerkRepository extends AbstractRepository implements Paginable, Crudable
+    class JenisRepository extends AbstractRepository implements Paginable,Crudable
     {
-        /**
-         * @param Merk $merk
-         */
-        public function __construct(Merk $merk)
+
+        public function __construct(Jenis $jenis)
         {
-            $this->model = $merk;
+            $this->model = $jenis;
         }
 
         //function for detail
@@ -36,9 +30,9 @@
         public function find($id, array $columns = ['*'])
         {
 
-            $merk = parent::find($id, $columns);
+            $jenis = parent::find($id, $columns);
 
-            return $merk;
+            return $jenis;
         }
 
         //function for store
@@ -50,17 +44,17 @@
         {
 
             try {
-                $merk = parent::create([
+                $jenis = parent::create([
                     'jenis_id' => e($data['jenis_id']),
-                    'merk'        => e($data['merk']),
+                    'jenis'        => e($data['jenis']),
                     'user_id'     => '',
                 ]);
 
-                return $merk;
+                return $jenis;
 
             } catch (\Exception $e) {
                 //store errors to log
-                \Log::error('class :' . MerkRepository::class . ' method : create | ' . $e);
+                \Log::error('class :' . JenisRepository::class . ' method : create | ' . $e);
 
                 return $this->createError();
             }
@@ -76,17 +70,17 @@
         {
 
             try {
-                $merk = parent::update($id, [
+                $jenis = parent::update($id, [
                     'jenis_id' => e($data['jenis_id']),
-                    'merk'        => e($data['merk']),
+                    'jenis'        => e($data['jenis']),
                     'user_id'     => '',
                 ]);
 
-                return $merk;
+                return $jenis;
 
             } catch (\Exception $e) {
                 //store errors to log
-                \Log::error('class :' . MerkRepository::class . ' method : update | ' . $e);
+                \Log::error('class :' . JenisRepository::class . ' method : update | ' . $e);
 
                 return $this->createError();
             }
@@ -100,12 +94,12 @@
         public function delete($id)
         {
             try {
-                $merk = parent::delete($id);
+                $jenis = parent::delete($id);
 
-                return $merk;
+                return $jenis;
             } catch (\Exception $e) {
                 //store error to log
-                \Log::error('class :' . MerkRepository::class . ' method : delete | ' . $e);
+                \Log::error('class :' . JenisRepository::class . ' method : delete | ' . $e);
 
                 return $this->createError();
             }
@@ -122,18 +116,18 @@
          */
         public function getByPage($limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
         {
-            $merk = parent::getByPageOrderBy($limit, $page, $column, 'merk', $search, 'created_at');
+            $jenis = parent::getByPageOrderBy($limit, $page, $column, 'jenis', $search, 'created_at');
 
 
-            return $merk;
+            return $jenis;
         }
 
         public function getByPageCategory($id,$limit = 10, $page = 1, array $column = ['*'], $field, $search = '')
         {
             $category = $this->model
-                ->where('merk', 'like', '%' . $search . '%')
-                ->where('jenis_id',$id)
-                ->orderBy(\DB::raw('ABS(merk)'))
+                ->where('jenis', 'like', '%' . $search . '%')
+                ->where('category_id',$id)
+                ->orderBy(\DB::raw('ABS(jenis)'))
                 ->paginate($limit)
                 ->toArray();
 

@@ -18,8 +18,12 @@
         Route::get('category-main', 'CategoryController@getByPageMain');
         Route::get('list-category-main', 'CategoryController@getListMain');
         Route::get('category-child/{id}', 'CategoryController@getByPageChild');
+        Route::get('list-category', 'CategoryController@getListCategory');
         Route::resource('menu', 'MenuController');
         Route::resource('merk', 'MerkController');
+        Route::resource('jenis', 'JenisController');
+        Route::get('jenis-by-category/{id}','JenisController@getByPageCategory');
+        Route::get('merk-by-jenis/{id}','MerkController@getByPageCategory');
         Route::resource('product', 'ProductController');
         Route::resource('report', 'ReportController');
         Route::resource('review', 'ReviewController');

@@ -60,7 +60,7 @@
 
             } catch (\Exception $e) {
                 //store errors to log
-                Log::error('class :' . TypeRepository::class . ' method : create | ' . $e);
+                \Log::error('class :' . TypeRepository::class . ' method : create | ' . $e);
 
                 return $this->createError();
             }
@@ -86,7 +86,7 @@
 
             } catch (\Exception $e) {
                 //store errors to log
-                Log::error('class :' . TypeRepository::class . ' method : update | ' . $e);
+                \Log::error('class :' . TypeRepository::class . ' method : update | ' . $e);
 
                 return $this->createError();
             }
@@ -105,7 +105,7 @@
                 return $type;
             } catch (\Exception $e) {
                 //store error to log
-                Log::error('class :' . TypeRepository::class . ' method : delete | ' . $e);
+                \Log::error('class :' . TypeRepository::class . ' method : delete | ' . $e);
 
                 return $this->createError();
             }

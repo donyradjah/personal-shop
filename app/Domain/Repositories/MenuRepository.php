@@ -61,7 +61,7 @@
 
             } catch (\Exception $e) {
                 //store errors to log
-                Log::error('class :' . MenuRepository::class . ' method : create | ' . $e);
+                \Log::error('class :' . MenuRepository::class . ' method : create | ' . $e);
 
                 return $this->createError();
             }
@@ -88,7 +88,7 @@
 
             } catch (\Exception $e) {
                 //store errors to log
-                Log::error('class :' . MenuRepository::class . ' method : update | ' . $e);
+                \Log::error('class :' . MenuRepository::class . ' method : update | ' . $e);
 
                 return $this->createError();
             }
@@ -107,7 +107,7 @@
                 return $menu;
             } catch (\Exception $e) {
                 //store error to log
-                Log::error('class :' . MenuRepository::class . ' method : delete | ' . $e);
+                \Log::error('class :' . MenuRepository::class . ' method : delete | ' . $e);
 
                 return $this->createError();
             }

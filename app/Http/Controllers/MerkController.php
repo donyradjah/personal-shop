@@ -35,6 +35,10 @@ class MerkController extends Controller
     {
         return $this->merk->getByPage(10, $request->input('page'), $column = ['*'], $key = '', $request->input('term'));
     }
+    public function getByPageCategory($id,Request $request)
+    {
+        return $this->merk->getByPageCategory($id,10, $request->input('page'), $column = ['*'], $key = '', $request->input('term'));
+    }
 
 
     /**

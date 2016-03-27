@@ -10,17 +10,17 @@
 
     use Illuminate\Database\Eloquent\Model;
 
-    class Merk extends Model
+    class Jenis extends Model
     {
         /**
          * @var string
          */
-        protected $table = 'merk';
+        protected $table = 'jenis';
 
         /**
          * @var array
          */
-        protected $fillable = ['jenis_id', 'merk','user_id'];
+        protected $fillable = ['category_id', 'jenis','user_id'];
 
         /**
          * @var string
@@ -30,7 +30,7 @@
         /**
          * @var string
          */
-        public static $tags = 'merk';
+        public static $tags = 'jenis';
 
         /**
          * @var array
@@ -48,7 +48,7 @@
          */
         public function category()
         {
-            return $this->belongsTo('App\Domain\Entities\Jenis', 'jenis_id');
+            return $this->belongsTo('App\Domain\Entities\Category', 'category_id');
         }
 
 
@@ -63,6 +63,6 @@
          */
         public function scopeLikeSearch($query, $search)
         {
-            return empty($q) ? $query : $query->where('merk', 'LIKE', '%' . $search . '%');
+            return empty($q) ? $query : $query->where('jenis', 'LIKE', '%' . $search . '%');
         }
     }
