@@ -17,6 +17,10 @@
      * Class PageController
      * @package App\Http\Controllers
      */
+    /**
+     * Class PageController
+     * @package App\Http\Controllers
+     */
     class PageController extends Controller
     {
 
@@ -99,6 +103,14 @@
         public function type()
         {
             return view('partials.type.index');
+        }
+
+        /**
+         * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+         */
+        public function jenis()
+        {
+            return view('partials.jenis.index');
         }
 
     }

@@ -42,3 +42,4 @@
     Route::get('/report', ['as' => 'page.report', 'uses' => 'PageController@report']);
     Route::get('/review', ['as' => 'page.review', 'uses' => 'PageController@review']);
     Route::get('/type', ['as' => 'page.type', 'uses' => 'PageController@type']);
+    Route::get('/jenis', ['as' => 'page.type', 'uses' => 'PageController@jenis']);
