@@ -1,1 +1,1 @@
-<h1>personal Shop just for spet my time</h1>
+<h1>personal Shop just for spent my time</h1>
