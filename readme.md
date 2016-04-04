@@ -1,1 +1,1 @@
-Just a SIMPLE WEB for e-commerce
+<h1>personal Shop just for spet my time</h1>
